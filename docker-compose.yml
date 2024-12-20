@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nexus:
+    image: sonatype/nexus3
+    volumes:
+      - "nexus:/sonatype-work"  # Persistent storage for Nexus data
+    ports:
+      - "8081:8081"  # Nexus UI port
+      - "7070:7070"  # Nexus API port
+
+volumes:
+  nexus:  # Persistent volume for Nexus data
