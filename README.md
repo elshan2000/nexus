@@ -30,9 +30,37 @@ volumes:
 ```
 
 
-### Key Changes:
-- **Insecure Registry Configuration**: The section that adds `localhost:8081` to the `insecure-registries` list in the Docker daemon's `daemon.json` has been added to the README.
-- Instructions on how to create and modify `/etc/docker/daemon.json` for the insecure registry setting.
 
-You can copy this entire content and save it as `README.md` in your repository. Let me know if you need further modifications!
+###  Set Docker Daemon to Use Insecure Registry
+
+In order to push and pull Docker images to/from the Nexus repository using HTTP (insecure registry), you need to configure your Docker daemon to allow insecure registries.
+
+#### Steps:
+
+1. Edit the Docker daemon configuration file (`/etc/docker/daemon.json`) on your local machine or server.
+
+    If the file does not exist, create it.
+
+    ```bash
+    sudo nano /etc/docker/daemon.json
+    ```
+
+2. Add the following content to the file:
+
+    ```json
+    {
+      "insecure-registries": ["localhost:8081"]
+    }
+    ```
+
+    This tells Docker that your Nexus registry (running on `localhost` port `8081`) is an insecure registry, which allows Docker to push and pull images over HTTP.
+
+3. Restart the Docker daemon to apply the changes:
+
+    ```bash
+    sudo systemctl restart docker
+    ```
+
+This configuration will allow Docker to interact with the Nexus registry over HTTP.
+
 
