@@ -27,3 +27,12 @@ services:
 
 volumes:
   nexus:  # Persistent volume for Nexus data
+```
+
+
+### Key Changes:
+- **Insecure Registry Configuration**: The section that adds `localhost:8081` to the `insecure-registries` list in the Docker daemon's `daemon.json` has been added to the README.
+- Instructions on how to create and modify `/etc/docker/daemon.json` for the insecure registry setting.
+
+You can copy this entire content and save it as `README.md` in your repository. Let me know if you need further modifications!
+
