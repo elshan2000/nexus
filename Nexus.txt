@@ -1,0 +1,23 @@
+Nexus:
+
+for running on production => needs 8 gig memory and 4 core cpu 
+
+a port for each repo
+
+1)docker hosted
+2)docker proxy => can't push only for proxy and cache 
+
+-----user management-----
+3 users:
+1) only push for pipeline
+2) only pull for pipeline
+3) each other
+---------------- 
+
+do not push with admin user
+
+
+/etc/docker/daemon.json:
+{
+"insecure-registries": [ "13.234.21.143:8083" ]  => when registry is not https
+}
